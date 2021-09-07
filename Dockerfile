@@ -4,6 +4,8 @@ WORKDIR /home/
 
 RUN echo "dasfsdddaf"
 
+RUN echo "dasfsd1111ddaf"
+
 RUN git clone https://github.com/jgw3352/project_4.git
 
 WORKDIR /home/project_4/
