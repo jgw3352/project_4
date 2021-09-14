@@ -4,7 +4,7 @@ WORKDIR /home/
 
 RUN echo "dasfsdddaf"
 
-RUN echo "dasfsd1111ddaf"
+RUN echo "dasfsd1dd111ddaf"
 
 RUN git clone https://github.com/jgw3352/project_4.git
 
@@ -16,10 +16,8 @@ RUN pip install -r requirements.txt
 
 RUN pip install gunicorn
 
-RUN python manage.py collectstatic
-
-RUN python manage.py migrate
+RUN pip install mysqlclient
 
 EXPOSE 8000
 
-CMD ["gunicorn", "djangoProject4.wsgi", "--bind", "0.0.0.0:8000"]
+CMD ["bash", "-c", "python manage.py collectstatic --noinput --settings=djangoProject4.settings.deploy && python manage.py migrate --settings=djangoProject4.settings.deploy && gunicorn --env DJANGO_SETTINGS_MODULE=djangoProject4.settings.deploy myproject.settings djangoProject4.wsgi --bind 0.0.0.0:8000"]
