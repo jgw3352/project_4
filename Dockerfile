@@ -14,8 +14,12 @@ RUN echo "SECRET_KEY=django-insecure-ozy*=y!14s*3%=7&z)dmr@e!v%3#6w&o#)z@-q_*kh(
 
 RUN pip install -r requirements.txt
 
+RUN pip install gunicorn
+
+RUN python manage.py collectstatic
+
 RUN python manage.py migrate
 
 EXPOSE 8000
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["gunicorn", "djangoProject4.wsgi", "--bind", "0.0.0.0:8000"]
