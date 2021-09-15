@@ -2,7 +2,7 @@ FROM python:3.9.0
 
 WORKDIR /home/
 
-RUN echo "dasfsdddaf"
+RUN echo "dasfdddsdddaf"
 
 RUN echo "dasfsd1dd111ddaf"
 
@@ -20,4 +20,4 @@ RUN pip install mysqlclient
 
 EXPOSE 8000
 
-CMD ["bash", "-c", "python manage.py collectstatic --noinput --settings=djangoProject4.settings.deploy && python manage.py migrate --settings=djangoProject4.settings.deploy && gunicorn --env DJANGO_SETTINGS_MODULE=djangoProject4.settings.deploy myproject.settings djangoProject4.wsgi --bind 0.0.0.0:8000"]
+CMD ["bash", "-c", "python manage.py collectstatic --noinput --settings=djangoProject4.settings.deploy && python manage.py migrate --settings=djangoProject4.settings.deploy && gunicorn --env DJANGO_SETTINGS_MODULE=djangoProject4.settings.deploy djangoProject4.wsgi --bind 0.0.0.0:8000"]
